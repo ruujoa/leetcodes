@@ -13,3 +13,18 @@
 
 本题有一种比较通用的解决方式。
 '''
+def isPalindrome_poor(num):
+  return str(num)[:] == str(num)[::-1] # 粗暴解法，没有考虑溢出问题，而且不符合“不能使用辅助空间”的限制
+
+def isPalindrome(num):
+  if num < 0 or (num % 10 == 0 and num != 0):
+    return False
+  rev = 0
+  while num > rev:
+    rev = rev * 10 + num % 10
+    num //= 10
+
+  return num == rev or num == rev // 10
+
+if __name__ == '__main__':
+  print(isPalindrome(122321))
